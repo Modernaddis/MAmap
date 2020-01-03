@@ -1,0 +1,115 @@
+style in a browser window. You won't see your markers yet.
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    
+        .marker {
+            background-image: url('mapbox-icon.png');
+            background-size: cover;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            
+        }
+        .marker:hover {
+            width: 33px;
+            height: 33px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ3Vzc3dyaWdodCIsImEiOiJjanIyY2licWgwOXhmM3lvOTc2c2hxdzcxIn0.ZtGJCCgx2yQHC_TISby9cQ';
+
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  center: [38.797779, 9.016620],
+  zoom: 2
+});
+
+var geojson = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [38.797779, 9.016620]
+    },
+    properties: {
+      Position: "sdfjsafasfn",
+      description: 'Washington, D.C.',
+      Image: "https://modernaddis.com/wp-content/uploads/job-manager-uploads/main_image/2019/12/fullsizeoutput_6-1-150x150-150x150.jpeg",
+      Categories: "Cafe"
+    }
+  }
+]
+};
+
+    // add markers to map
+    geojson.features.forEach(function (marker) {
+
+        // Popup Info Window for pin or marker
+        var markerHeight = 10, markerRadius = 10, linearOffset = 25;
+        var popupOffsets = {
+            'top': [0, 0],
+            'top-left': [0, 0],
+            'top-right': [0, 0],
+            'bottom': [0, -markerHeight],
+            'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+            'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+            'left': [markerRadius, (markerHeight - markerRadius) * -1],
+            'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+        };
+
+        var info = "<h3>" + marker.properties.Position + 
+            "</h3><h4>"+ marker.properties.Categories + 
+              "</h4><img src=" + '"' + marker.properties.Image + '"' + ">";
+        var popup = new mapboxgl.Popup({ offset: popupOffsets, className: 'my-class' })
+            .setLngLat(marker.geometry.coordinates)
+            .setHTML(info)
+            .addTo(map);
+
+        // create a HTML element for each feature
+        var el = document.createElement('div');
+        el.className = 'marker';
+
+        // make a marker for each feature and add to the map
+        new mapboxgl.Marker(el, {offset:[x=0, y=0]})
+            .setLngLat(marker.geometry.coordinates)
+            .setPopup(popup)
+            .addTo(map);
+            
+    });
+
+</script>
+
+</body>
+</html>
+
+
+
+ 
