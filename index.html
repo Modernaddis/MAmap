@@ -100,7 +100,13 @@ var geojson = {
 
         var info = "<h3>" + marker.properties.Position + 
             "</h3><h4>"+ marker.properties.Categories + 
-              "</h4><img src=" + '"' + marker.properties.Image + '"' + ">";
+              "</h4><a href="+ '"' +
+              'https://modernaddis.com' + '"' +
+              "target="+ '"' +
+              '_blank' + '"' +
+              "title="+ '"' +
+              'Go to Listing' + '"' +
+              "><img src=" + '"' + marker.properties.Image + '"' + "></a>";
         var popup = new mapboxgl.Popup({ offset: popupOffsets, className: 'my-class' })
             .setLngLat(marker.geometry.coordinates)
             .setHTML(info)
