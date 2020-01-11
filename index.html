@@ -3,127 +3,77 @@ style in a browser window. You won't see your markers yet.
 <html>
 <head>
     <meta charset='utf-8' />
-    <title></title>
+    <title>Getachew Map V2</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
+    <link href='Style/main.css' rel='stylesheet' />
+
+    <!-- Marker Clustering -->
+    <!-- <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' /> -->
     
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-        }
-    
-        .marker {
-            background-image: url('mapbox-icon2.png');
-            background-size: cover;
-            width: 45px;
-            height: 45px;
-            cursor: pointer;
-            
-        }
-        .marker:hover {
-            width: 43px;
-            height: 43px;
-            cursor: pointer;
-        }
-    </style>
+    <!-- Jquery -->
+    <script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
 </head>
 <body>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css" type="text/css" />
+    
+    <a href='./dbUpdate/update.html' title='Add New Listing' target='_self'>
+    <img src='./Images/addListing1.png' alt='add-listing-icon' id = 'addListing' class = 'addListing'/>
+    </a>
+    <div id="map"></div>
+     
+    <script>
+      const key = 'pk.eyJ1IjoieW9zaTEiLCJhIjoiY2pvNHdzem96MDBycDNrb2E5aDh1bW1nYiJ9._uzV8S-tiPaZZiCm0H4ABA';
 
-<div id='map'></div>
+      mapboxgl.accessToken = key;
+
+      map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [38.797779, 9.016620],
+        zoom: 2
+      });
+
+      //Directions API
+      map.addControl(
+        new MapboxDirections({
+          accessToken: mapboxgl.accessToken
+        }),
+        'top-left'
+      );
+
+      // Zoom and Rotation 
+      map.addControl(new mapboxgl.NavigationControl());
+
+      // Add geolocate user.
+      map.addControl(
+          new mapboxgl.GeolocateControl({
+            positionOptions: {
+              enableHighAccuracy: true
+            },
+            trackUserLocation: true
+          })
+        );
+    </script>
+
+
+
+
+<!-- Initialize Firbase Database -->
+<script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
+<script type="text/javascript" src="firebase\init.js"></script>
+
+<script type="text/javascript" src="firebase\functions.js"></script>
+<!-- Initialize Firbase Database END-->
 
 <script>
-
-mapboxgl.accessToken = 'pk.eyJ1IjoieW9zaTEiLCJhIjoiY2pvNHdzem96MDBycDNrb2E5aDh1bW1nYiJ9._uzV8S-tiPaZZiCm0H4ABA';
-
-var map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
-  center: [38.797779, 9.016620],
-  zoom: 2
-});
-
-var geojson = {
-  type: 'FeatureCollection',
-  features: [{
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [38.797779, 9.016620]
-    },
-    properties: {
-      Position: "sdfjsafasfn",
-      Posted: "30th December 2019 by yosefg",
-      Image: "https://modernaddis.com/wp-content/uploads/job-manager-uploads/main_image/2019/12/fullsizeoutput_6-1-150x150-150x150.jpeg",
-      Categories: "Cafe"
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [-0.124702, 51.522717] //38.752397, 8.991316
-    },
-    properties: {
-      Position: "Russell Hotel",
-      Posted: "17th April 2015 by yosefg",
-      Image: "https://modernaddis.com/wp-content/uploads/2018/12/01_listable_demo-150x150-150x150.jpg",
-      Categories: "Apartment Hotels"
-    }
-  }
-]
-};
-
-    // add markers to map
-    geojson.features.forEach(function (marker) {
-
-        // Popup Info Window for pin or marker
-        var markerHeight = 10, markerRadius = 10, linearOffset = 25;
-        var popupOffsets = {
-            'top': [0, 0],
-            'top-left': [0, 0],
-            'top-right': [0, 0],
-            'bottom': [0, -markerHeight],
-            'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-            'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-            'left': [markerRadius, (markerHeight - markerRadius) * -1],
-            'right': [-markerRadius, (markerHeight - markerRadius) * -1]
-        };
-
-        var info = "<h3>" + marker.properties.Position + 
-            "</h3><h4>"+ marker.properties.Categories + 
-              "</h4><a href="+ '"' +
-              'https://modernaddis.com' + '"' +
-              "target="+ '"' +
-              '_blank' + '"' +
-              "title="+ '"' +
-              'Go to Listing' + '"' +
-              "><img src=" + '"' + marker.properties.Image + '"' + "></a>";
-        var popup = new mapboxgl.Popup({ offset: popupOffsets, className: 'my-class' })
-            .setLngLat(marker.geometry.coordinates)
-            .setHTML(info)
-            .addTo(map);
-
-        // create a HTML element for each feature
-        var el = document.createElement('div');
-        el.className = 'marker';
-
-        // make a marker for each feature and add to the map
-        new mapboxgl.Marker(el, {offset:[x=0, y=0]})
-            .setLngLat(marker.geometry.coordinates)
-            .setPopup(popup)
-            .addTo(map);
-            
-    });
-
+    populateMap();
+    
 </script>
 
 </body>
