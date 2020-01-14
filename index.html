@@ -22,9 +22,19 @@ style in a browser window. You won't see your markers yet.
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css" type="text/css" />
     
-    <a href='./dbUpdate/update.html' title='Add New Listing' target='_self'>
+    <a href='./dbUpdate/update.html' title='Add New Listing Form' target='_self'>
     <img src='./Images/addListing1.png' alt='add-listing-icon' id = 'addListing' class = 'addListing'/>
     </a>
+    <img onClick = 'addListing0();' src='./Images/addListing.png' alt='add-listing-icon' id = 'addListing0' class = 'addListing0' title='Click to Add New Listing'/>
+    <div id="clickForm" class="clickForm">
+        Posted By: <br><input type="text" id="posted_by" placeholder="Your Name"><br>
+        Category: <br><input type="text" id="category" placeholder="Enter Category"><br>
+        Position: <br><input type="text" id="position" placeholder="Enter Position"><br>
+        Rating: <br><input type="text" id="rating" placeholder="Value from 0-5"><br>
+        Image URL: <br><input type="text" id="img_url" placeholder="https://yourImage.png"><br>
+        <button onClick = 'runClickForm();' class='btn'>Done</button>
+        
+    </div>
     <div id="map"></div>
      
     <script>
