@@ -83,8 +83,116 @@ body {
 #map {
     position: absolute;
     top: 0;
+    right: 0;
     bottom: 0;
-    width: 100%;  
+    width: 50%;  
+}
+
+.filterPanel{
+    position: absolute;
+    padding: 3px;
+    top: 175px;
+    left: 7px;
+    border-radius: 5px;
+
+    text-align: center;
+
+    font-family: 'Arial';
+    font-size: 12;
+    z-index: 1000;
+
+}
+
+.filter{
+    padding: 3px;
+    margin: 3px;
+    width: 80%;
+
+    border-style: solid;
+    border-width: thin;
+    border-color: #fff;
+
+    color: #fff;
+    text-align: center;
+
+    background-color: #6a7882;
+    font-family: 'Arial';
+    font-size: 12;
+
+    z-index: 1000;
+    opacity: 0.5;
+}
+
+.filter:hover{
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    opacity: 0.7;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Arial';
+    font-size: 14;
+  }
+
+#listingCards{
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 48%;
+    
+    
+    background-color: #F5F5F5;
+    overflow: scroll;
+    
+    z-index: 1000;
+}
+
+.card{
+    width: 35%;
+    border-style: solid;
+    border-width: thin;
+    border-color: #C0C0C0;
+    border-radius: 10px;
+    margin: 15px;
+    z-index: 1000;
+
+    background-color: #fff;
+    position: relative;
+}
+
+.card h4{
+    margin: 15px;
+    color: #DC143C;
+}
+
+.card p{
+    margin: 15px;
+}
+
+.card:hover{
+
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cardImg{
+    
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    min-width: 100%;
+    max-width: 100%;
+    
+    position: relative;
+    
 }
 
 .clickForm{

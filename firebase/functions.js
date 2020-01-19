@@ -1,6 +1,7 @@
 // Global Map Variable
 var map;
 //GLOBAL
+var category_filter = 'none';
 // Global for Firebase fill
 var geojson = {
     'type': 'FeatureCollection',
@@ -137,7 +138,8 @@ function populateMap() {
     var entries = fbRef.child('data');
 
     entries.on('value', function (snapshot) {
-       
+        
+        
 
         //alert('Trying Snapshot Add FOR Each...');
         snapshot.forEach(function (childSnapshot) {
@@ -177,45 +179,141 @@ function populateMap() {
         // });
 
         
+        if (category_filter === 'none') {
+            // alert('no filter');
+            // Add Markers
+            data.features.forEach(function (marker) {
 
 
-        
+                // create a HTML element for each feature
+                var el = document.createElement('div');
+                el.className = 'marker';
+                el.id = 'unclustered-point';
+                el.filter = ['!', ['has', 'point_count']];
 
 
+                var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+                    "<img src=" + '"' +
+                    marker.properties.Image
+                    + '"' +
+                    "width = 185em alt=" + '"Listing-pic"' + "/><hr />"
+                    + marker.properties.Position +
+                    '</br><strong>Rating: </strong>'
+                    + marker.properties.Rating
+                );
+
+                // make a marker for each feature and add to the map
+                new mapboxgl.Marker(el)
+                    .setLngLat(marker.geometry.coordinates)
+                    .setPopup(popup)
+                    .addTo(map);
+
+
+            }); //Add Markers END
+
+            // Add Listing Ball Card
+            data.features.forEach(function (listingCard) {
+                let dugout = document.getElementById('listingCards');
+                let cardDiv = document.createElement('div')
+                let newLine = document.createElement('BR')
+                let cardImg = document.createElement('img');
+                let cardPar = document.createElement('p');
+                let h = document.createElement("H4");
+
+                cardImg.classList.add('cardImg');
+                cardImg.src = listingCard.properties.Image
+                cardImg.alt = 'listing-Visual-Not-Available'
+                let cardPosition = document.createTextNode(listingCard.properties.Position);
+                let cardCategory = document.createTextNode(listingCard.properties.Category);
+
+                cardDiv.classList.add('card');
+
+
+
+
+
+                // Build Card
+                dugout.appendChild(cardDiv);
+
+                cardDiv.appendChild(cardImg);
+                cardDiv.appendChild(cardPar);
+                h.appendChild(cardPosition);
+                h.appendChild(newLine);
+                cardPar.appendChild(cardCategory);
+                cardDiv.appendChild(h);
+                cardDiv.appendChild(cardPar);
+
+            });
+
+        } else {
+            // Add Markers
+            data.features.forEach(function (marker) {
+
+
+                // create a HTML element for each feature
+                var el = document.createElement('div');
+                el.className = 'marker';
+                el.id = 'unclustered-point';
+                el.filter = ['!', ['has', 'point_count']];
+
+                if (marker.properties.Category === category_filter){
+                    var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+                        "<img src=" + '"' +
+                        marker.properties.Image
+                        + '"' +
+                        "width = 185em alt=" + '"Listing-pic"' + "/><hr />"
+                        + marker.properties.Position +
+                        '</br><strong>Rating: </strong>'
+                        + marker.properties.Rating
+                    );
+    
+                    // make a marker for each feature and add to the map
+                    new mapboxgl.Marker(el)
+                        .setLngLat(marker.geometry.coordinates)
+                        .setPopup(popup)
+                        .addTo(map);
+                }
+            }); //Add Markers END
+
+            // Add Listing Ball Card
+            data.features.forEach(function (listingCard) {
+                let dugout = document.getElementById('listingCards');
+                let cardDiv = document.createElement('div')
+                let newLine = document.createElement('BR')
+                let cardImg = document.createElement('img');
+                let cardPar = document.createElement('p');
+                let h = document.createElement("H4");
+
+                cardImg.classList.add('cardImg');
+
+                if (listingCard.properties.Category === category_filter) {
+                    cardImg.src = listingCard.properties.Image
+                    cardImg.alt = 'listing-Visual-Not-Available'
+                    let cardPosition = document.createTextNode(listingCard.properties.Position);
+                    let cardCategory = document.createTextNode(listingCard.properties.Category);
+
+                    cardDiv.classList.add('card');
+
+                    // Build Card
+                    dugout.appendChild(cardDiv);
+
+                    cardDiv.appendChild(cardImg);
+                    cardDiv.appendChild(cardPar);
+                    h.appendChild(cardPosition);
+                    h.appendChild(newLine);
+                    cardPar.appendChild(cardCategory);
+                    cardDiv.appendChild(h);
+                    cardDiv.appendChild(cardPar);
+                }
+            });
+
+        }
 
 
     
 
         ////////
-
-        data.features.forEach(function (marker) {
-
-            
-            // create a HTML element for each feature
-            var el = document.createElement('div');
-            el.className = 'marker';
-            el.id = 'unclustered-point';
-            el.filter = ['!', ['has', 'point_count']];
-            
-
-            var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-                "<img src=" + '"' +
-                marker.properties.Image
-                + '"' +
-                "width = 185em alt=" + '"Listing-pic"' + "/><hr />"
-                + marker.properties.Position +
-                '</br><strong>Rating: </strong>'
-                + marker.properties.Rating
-            );
-
-            // make a marker for each feature and add to the map
-            new mapboxgl.Marker(el)
-                .setLngLat(marker.geometry.coordinates)
-                .setPopup(popup)
-                .addTo(map);
-            
-            
-        });
+        
 
         
 
@@ -232,7 +330,20 @@ function populateMap() {
 
 } //populateGeoJson
 
+function filterMap(i){
+    const filters = ['Food', 'Play', 'Bakery', 'Park', 'Hotels', 'Movie', 'Gallery'];
+    category_filter = filters[i];
 
+    $( ".marker" ).remove();
+    $(".card").remove();
+    geojson = {
+        'type': 'FeatureCollection',
+        'features': []
+    };
+
+    populateMap();
+    // alert(filters[i])
+}
 
 // // Click Listener
 // map.on('click', function (e) {

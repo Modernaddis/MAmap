@@ -22,20 +22,67 @@ style in a browser window. You won't see your markers yet.
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css" type="text/css" />
     
-    <a href='./dbUpdate/update.html' title='Add New Listing Form' target='_self'>
-    <img src='./Images/addListing1.png' alt='add-listing-icon' id = 'addListing' class = 'addListing'/>
-    </a>
-    <img onClick = 'addListing0();' src='./Images/addListing.png' alt='add-listing-icon' id = 'addListing0' class = 'addListing0' title='Click to Add New Listing'/>
-    <div id="clickForm" class="clickForm">
-        Posted By: <br><input type="text" id="posted_by" placeholder="Your Name"><br>
-        Category: <br><input type="text" id="category" placeholder="Enter Category"><br>
-        Position: <br><input type="text" id="position" placeholder="Enter Position"><br>
-        Rating: <br><input type="text" id="rating" placeholder="Value from 0-5"><br>
-        Image URL: <br><input type="text" id="img_url" placeholder="https://yourImage.png"><br>
-        <button onClick = 'runClickForm();' class='btn'>Done</button>
+    
+    <div id='container' class='container'><!-- Main Container -->
+      
+      <div id="map"><!-- Map Div -->
+        <div id='filterPanel' class='filterPanel'>
+          <!-- Filter -->
+          <div onClick = 'filterMap(0)' class='filter'>
+            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-food.svg' alt='filter-icon' title='Food' /></br>
+            <label>Food</label>
+          </div>
+          <div onClick = 'filterMap(1)'class='filter'>
+            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-arts-entertainment.svg' alt='filter-icon' title='Play' /></br>
+            <label>Play</label>
+          </div>
+          <div onClick = 'filterMap(2)'class='filter'>
+            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-bakery.svg' alt='filter-icon' title='Bakery' /></br>
+            <label>Bakery</label>
+          </div>
+          <div onClick = 'filterMap(3)'class='filter'>
+            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-outdoors.svg' alt='filter-icon' title='Park' /></br>
+            <label>Park</label>
+          </div>
+          <div onClick = 'filterMap(4)'class='filter'>
+            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-lodgings.svg' alt='filter-icon' title='Hotels' /></br>
+            <label>Hotels</label>
+          </div>
+          <div onClick = 'filterMap(5)'class='filter'>
+            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-movie.svg' alt='filter-icon' title='Movies' /></br>
+            <label>Movie</label>
+          </div>
+          <div onClick = 'filterMap(6)'class='filter'>
+            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-art-gallery.svg' alt='filter-icon' title='Gallery' /></br>
+            <label>Gallery</label>
+
+          </div>
         
-    </div>
-    <div id="map"></div>
+        </div><!-- Filter END-->
+
+
+
+        <a href='./dbUpdate/update.html' title='Add New Listing Form' target='_self'>
+          <img src='./Images/addListing1.png' alt='add-listing-icon' id='addListing' class='addListing' />
+        </a>
+        <img onClick='addListing0();' src='./Images/addListing.png' alt='add-listing-icon' id='addListing0'
+          class='addListing0' title='Click to Add New Listing' />
+        <div id="clickForm" class="clickForm">
+          Posted By: <br><input type="text" id="posted_by" placeholder="Your Name"><br>
+          Category: <br><input type="text" id="category" placeholder="Enter Category"><br>
+          Position: <br><input type="text" id="position" placeholder="Enter Position"><br>
+          Rating: <br><input type="text" id="rating" placeholder="Value from 0-5"><br>
+          Image URL: <br><input type="text" id="img_url" placeholder="https://yourImage.png"><br>
+          <button onClick='runClickForm();' class='btn'>Done</button>
+      
+        </div>
+        
+      </div><!-- Map Div END-->
+      <div id='listingCards' class='container'></div>
+    
+    </div><!-- Main Container END-->
+    
+    
      
     <script>
       const key = 'pk.eyJ1IjoieW9zaTEiLCJhIjoiY2pvNHdzem96MDBycDNrb2E5aDh1bW1nYiJ9._uzV8S-tiPaZZiCm0H4ABA';
