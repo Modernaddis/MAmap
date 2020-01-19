@@ -154,7 +154,8 @@ function populateMap() {
                     'Category': childData.Category,
                     'Rating': childData.Rating,
                     'Posted': childData.Posted,
-                    'Image': childData.Image
+                    'Image': childData.Image,
+                    'Listing_URL': childData.Listing_URL
                 },
                 'geometry': {
                     'type': 'Point',
@@ -218,6 +219,7 @@ function populateMap() {
                 let newLine = document.createElement('BR')
                 let cardImg = document.createElement('img');
                 let cardPar = document.createElement('p');
+                let a = document.createElement('a');
                 let h = document.createElement("H4");
 
                 cardImg.classList.add('cardImg');
@@ -240,7 +242,14 @@ function populateMap() {
                 h.appendChild(cardPosition);
                 h.appendChild(newLine);
                 cardPar.appendChild(cardCategory);
-                cardDiv.appendChild(h);
+
+                //Create Link
+                a.appendChild(h);
+                a.href = listingCard.properties.Listing_URL;
+                
+
+
+                cardDiv.appendChild(a);
                 cardDiv.appendChild(cardPar);
 
             });
@@ -282,6 +291,7 @@ function populateMap() {
                 let newLine = document.createElement('BR')
                 let cardImg = document.createElement('img');
                 let cardPar = document.createElement('p');
+                let a = document.createElement('a');
                 let h = document.createElement("H4");
 
                 cardImg.classList.add('cardImg');
@@ -302,7 +312,14 @@ function populateMap() {
                     h.appendChild(cardPosition);
                     h.appendChild(newLine);
                     cardPar.appendChild(cardCategory);
-                    cardDiv.appendChild(h);
+
+                    //Create Link
+                    a.appendChild(h);
+                    a.href = listingCard.properties.Listing_URL;
+                    
+
+
+                    cardDiv.appendChild(a);
                     cardDiv.appendChild(cardPar);
                 }
             });
