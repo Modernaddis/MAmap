@@ -145,15 +145,12 @@ function populateMap() {
         snapshot.forEach(function (childSnapshot) {
             var childData = childSnapshot.val();
 
-            
-
             var fc = {
                 'type': 'Feature',
                 'properties': {
                     'Position': childData.Position,
                     'Category': childData.Category,
                     'Rating': childData.Rating,
-                    'Posted': childData.Posted,
                     'Image': childData.Image,
                     'Listing_URL': childData.Listing_URL
                 },
@@ -225,6 +222,7 @@ function populateMap() {
                 cardImg.classList.add('cardImg');
                 cardImg.src = listingCard.properties.Image
                 cardImg.alt = 'listing-Visual-Not-Available'
+                
                 let cardPosition = document.createTextNode(listingCard.properties.Position);
                 let cardCategory = document.createTextNode(listingCard.properties.Category);
 
@@ -246,6 +244,7 @@ function populateMap() {
                 //Create Link
                 a.appendChild(h);
                 a.href = listingCard.properties.Listing_URL;
+                a.target = '_blank';
                 
 
 
@@ -316,6 +315,7 @@ function populateMap() {
                     //Create Link
                     a.appendChild(h);
                     a.href = listingCard.properties.Listing_URL;
+                    a.target = '_blank';
                     
 
 
