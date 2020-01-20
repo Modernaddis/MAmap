@@ -244,7 +244,7 @@ function populateMap() {
                 //Create Link
                 a.appendChild(h);
                 a.href = listingCard.properties.Listing_URL;
-                a.target = '_blank';
+                a.target = '_parent';
                 
 
 
@@ -315,7 +315,7 @@ function populateMap() {
                     //Create Link
                     a.appendChild(h);
                     a.href = listingCard.properties.Listing_URL;
-                    a.target = '_blank';
+                    a.target = '_parent';
                     
 
 
