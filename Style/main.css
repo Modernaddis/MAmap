@@ -144,8 +144,8 @@ body {
 
 .toggleBanner1{
     position: absolute;
-    top: 9px;
-    right: 65px;
+    top: 140px;
+    left: 245px;
     z-index: 2;
 
     display: none;
