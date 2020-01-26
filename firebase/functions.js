@@ -15,42 +15,53 @@ var resultsList = [];
 var searchCenter;
 var lng;
 var lat;
+var showMap = 'false';
+var showListing = 'true';
 
 //GLOBALS
 
-// Update Radius By Typing Km Values
-// $('#search').change(search);
+$('#toggleMap').click(function(){
+    // alert('toggle map')
+    if (showMap === 'false'){
+        
+        showMap = 'true';
+        showListing = 'false';
+        $( "#map" ).show()
+        $( "#listingCards").hide()
 
-// var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
-// mapboxClient.geocoding
-//     .forwardGeocode({
-//         query: 'Wellington, New Zealand',
-//         autocomplete: false,
-//         limit: 1
-//     })
-//     .send()
-//     .then(function (response) {
-//         if (
-//             response &&
-//             response.body &&
-//             response.body.features &&
-//             response.body.features.length
-//         ) {
-//             var feature = response.body.features[0];
+    }else{
+        showMap = 'false';
+        showListing = 'true';
+       
+        $( "#map" ).hide()
+        $( "#listingCards").show()
 
-//             var map = new mapboxgl.Map({
-//                 container: 'map',
-//                 style: 'mapbox://styles/mapbox/streets-v11',
-//                 center: feature.center,
-//                 zoom: 10
-//             });
-//             new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
-//         }
-//     });
+    }
+})
 
-// Search Around Geocoded Entry
-// $('#geocode-entry').change(findPlace);
+$('#toggleList').click(function(){
+    if (showListing === 'false'){
+        
+        showListing = 'true';
+        showMap = 'false';
+        $( "#map" ).hide()
+        $( "#listingCards").show()
 
+    }else{
+        showListing = 'false';
+        showMap = 'true';
+       
+        $( "#map" ).show()
+        $( "#listingCards").hide()
+
+    }
+})
+
+function showMap() {
+    
+    
+    
+}
 
 // Click Map to add Listing
 function addListing0(){
@@ -189,22 +200,49 @@ function populateMap() {
                 el.id = 'unclustered-point';
                 el.filter = ['!', ['has', 'point_count']];
 
+                //Create Listing URL
+                var listing_hardCode = 'https://modernaddis.com/listings/';
+                var listing_Destination = marker.properties.Position.split(' ').join('-');
+                var listingHref = listing_hardCode + listing_Destination + '/'
+                
 
-                var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-                    "<img src=" + '"' +
-                    marker.properties.Image
-                    + '"' +
-                    "width = 185em alt=" + '"Listing-pic"' + "/><hr />"
-                    + marker.properties.Position +
-                    '</br><strong>Rating: </strong>'
-                    + marker.properties.Rating
-                );
+                //Check for Image
+                if (typeof marker.properties.Image !== "undefined") {
+                    var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+                        "<img src=" + '"' +
+                        marker.properties.Image
+                        + '"' +
+                        "width = 185em alt=" + '"Listing-pic"' + "/><hr />" +
+                        '<a class="popup_Anchor" href=' + '"' + listingHref + '"'
+                        + ' target="_parent"><strong>' + marker.properties.Position + '</strong></a>'
+                        + '</br><strong>Rating: </strong>'
+                        + marker.properties.Rating
+                    );
 
-                // make a marker for each feature and add to the map
-                new mapboxgl.Marker(el)
-                    .setLngLat(marker.geometry.coordinates)
-                    .setPopup(popup)
-                    .addTo(map);
+                    // make a marker for each feature and add to the map
+                    new mapboxgl.Marker(el)
+                        .setLngLat(marker.geometry.coordinates)
+                        .setPopup(popup)
+                        .addTo(map);
+                }else{
+                    var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+                        '<a class="popup_Anchor" href=' + '"' + listingHref + '"'
+                        + ' target="_parent" ><strong>' + marker.properties.Position + '</strong></a>'
+                        + '</br><strong>Rating: </strong>'
+                        + marker.properties.Rating
+                    );
+
+                    // make a marker for each feature and add to the map
+                    new mapboxgl.Marker(el)
+                        .setLngLat(marker.geometry.coordinates)
+                        .setPopup(popup)
+                        .addTo(map);
+
+                }
+
+                
+
+                
 
 
             }); //Add Markers END
@@ -235,15 +273,26 @@ function populateMap() {
                 // Build Card
                 dugout.appendChild(cardDiv);
 
-                cardDiv.appendChild(cardImg);
+                //Add Image If Image Available
+                if (typeof listingCard.properties.Image !== "undefined"){
+                    cardDiv.appendChild(cardImg);
+                    // alert('Found Image!!!')
+                }
+
                 cardDiv.appendChild(cardPar);
                 h.appendChild(cardPosition);
                 h.appendChild(newLine);
                 cardPar.appendChild(cardCategory);
 
+                
+                //Create Listing URL
+                var listing_hardCode = 'https://modernaddis.com/listings/';
+                var listing_Destination = listingCard.properties.Position.split(' ').join('-');
+                var listingHref = listing_hardCode + listing_Destination + '/'
+
                 //Create Link
                 a.appendChild(h);
-                a.href = listingCard.properties.Listing_URL;
+                a.href = listingHref;
                 a.target = '_parent';
                 
 
@@ -264,22 +313,46 @@ function populateMap() {
                 el.id = 'unclustered-point';
                 el.filter = ['!', ['has', 'point_count']];
 
-                if (marker.properties.Category === category_filter){
-                    var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-                        "<img src=" + '"' +
-                        marker.properties.Image
-                        + '"' +
-                        "width = 185em alt=" + '"Listing-pic"' + "/><hr />"
-                        + marker.properties.Position +
-                        '</br><strong>Rating: </strong>'
-                        + marker.properties.Rating
-                    );
-    
-                    // make a marker for each feature and add to the map
-                    new mapboxgl.Marker(el)
-                        .setLngLat(marker.geometry.coordinates)
-                        .setPopup(popup)
-                        .addTo(map);
+                if (marker.properties.Category === category_filter) {
+                    //Create Listing URL
+                    var listing_hardCode = 'https://modernaddis.com/listings/';
+                    var listing_Destination = marker.properties.Position.split(' ').join('-');
+                    var listingHref = listing_hardCode + listing_Destination + '/'
+
+
+                    //Check for Image
+                    if (typeof marker.properties.Image !== "undefined") {
+                        var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+                            "<img src=" + '"' +
+                            marker.properties.Image
+                            + '"' +
+                            "width = 185em alt=" + '"Listing-pic"' + "/><hr />" +
+                            '<a class="popup_Anchor" href=' + '"' + listingHref + '"'
+                            + ' target="_parent"><strong>' + marker.properties.Position + '</strong></a>'
+                            + '</br><strong>Rating: </strong>'
+                            + marker.properties.Rating
+                        );
+
+                        // make a marker for each feature and add to the map
+                        new mapboxgl.Marker(el)
+                            .setLngLat(marker.geometry.coordinates)
+                            .setPopup(popup)
+                            .addTo(map);
+                    } else {
+                        var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+                            '<a class="popup_Anchor" href=' + '"' + listingHref + '"'
+                            + ' target="_parent" ><strong>' + marker.properties.Position + '</strong></a>'
+                            + '</br><strong>Rating: </strong>'
+                            + marker.properties.Rating
+                        );
+
+                        // make a marker for each feature and add to the map
+                        new mapboxgl.Marker(el)
+                            .setLngLat(marker.geometry.coordinates)
+                            .setPopup(popup)
+                            .addTo(map);
+
+                    }
                 }
             }); //Add Markers END
 
@@ -306,17 +379,28 @@ function populateMap() {
                     // Build Card
                     dugout.appendChild(cardDiv);
 
-                    cardDiv.appendChild(cardImg);
+                    //Add Image If Image Available
+                    if (typeof listingCard.properties.Image !== "undefined") {
+                        cardDiv.appendChild(cardImg);
+                        // alert('Found Image!!!')
+                    }
+
                     cardDiv.appendChild(cardPar);
                     h.appendChild(cardPosition);
                     h.appendChild(newLine);
                     cardPar.appendChild(cardCategory);
 
+
+                    //Create Listing URL
+                    var listing_hardCode = 'https://modernaddis.com/listings/';
+                    var listing_Destination = listingCard.properties.Position.split(' ').join('-');
+                    var listingHref = listing_hardCode + listing_Destination + '/'
+
                     //Create Link
                     a.appendChild(h);
-                    a.href = listingCard.properties.Listing_URL;
+                    a.href = listingHref;
                     a.target = '_parent';
-                    
+
 
 
                     cardDiv.appendChild(a);
