@@ -25,6 +25,13 @@
     <div id='main-container' class='main-container'><!-- Main Container -->
       
       <div id="map"><!-- Map Div -->
+        <!-- Show Listings Mobile-->
+        
+          <div class='showFilters' id='showFilters'>
+            <img src='filter_hamburger.png' 
+              title='Show Filters' height="45px" /></br>
+          </div>
+       
         <div id='filterPanel' class='filterPanel'>
           <!-- Filter -->
           <div onClick = 'filterMap(0)' class='filter'>
@@ -113,7 +120,7 @@
         new MapboxDirections({
           accessToken: mapboxgl.accessToken
         }),
-        'top-left'
+        'top-right'
       );
 
       // Zoom and Rotation 

@@ -17,8 +17,18 @@ var lng;
 var lat;
 var showMap = 'false';
 var showListing = 'true';
+var showFilters = 'false';
 
 //GLOBALS
+$('#showFilters').click(function(){
+    if (showFilters === 'false'){
+        showFilters = 'true';
+        document.getElementById("filterPanel").style.display = "block";
+    }else{
+        showFilters = 'false';
+        document.getElementById("filterPanel").style.display = "none";
+    }
+})
 
 $('#toggleMap').click(function(){
     // alert('toggle map')
@@ -26,15 +36,21 @@ $('#toggleMap').click(function(){
         
         showMap = 'true';
         showListing = 'false';
-        $( "#map" ).show()
-        $( "#listingCards").hide()
+
+        document.getElementById("map").style.zIndex = 1000;
+        document.getElementById("listingCards").style.zIndex = 999;
+        // $( "#map" ).show()
+        // $( "#listingCards").hide()
 
     }else{
         showMap = 'false';
         showListing = 'true';
+
+        document.getElementById("map").style.zIndex = 999;
+        document.getElementById("listingCards").style.zIndex = 1000;
        
-        $( "#map" ).hide()
-        $( "#listingCards").show()
+        // $( "#map" ).hide()
+        // $( "#listingCards").show()
 
     }
 })
@@ -44,15 +60,20 @@ $('#toggleList').click(function(){
         
         showListing = 'true';
         showMap = 'false';
-        $( "#map" ).hide()
-        $( "#listingCards").show()
+        // $( "#map" ).hide()
+        // $( "#listingCards").show()
+
+        document.getElementById("map").style.zIndex = 999;
+        document.getElementById("listingCards").style.zIndex = 1000;
 
     }else{
         showListing = 'false';
         showMap = 'true';
-       
-        $( "#map" ).show()
-        $( "#listingCards").hide()
+        
+        document.getElementById("map").style.zIndex = 1000;
+        document.getElementById("listingCards").style.zIndex = 999;
+        // $( "#map" ).show()
+        // $( "#listingCards").hide()
 
     }
 })

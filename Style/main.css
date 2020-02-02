@@ -88,12 +88,46 @@ body {
     width: 50%;  
 }
 
+.showFilters{
+    position: absolute;
+    top: 140px;
+    right: 250px;
+    
+    padding: 3px;
+    margin: 3px;
+    width: 45px;
+
+    border-style: solid;
+    border-width: thin;
+    border-color: #fff;
+
+    color: #fff;
+    text-align: center;
+
+    background-color: #6a7882;
+    font-family: 'Arial';
+    font-size: 12;
+
+    z-index: 2;
+    opacity: 0.5; 
+}
+
+.showFilters:hover{
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    opacity: 0.7;
+
+}
+
 .filterPanel{
     position: absolute;
     padding: 3px;
-    top: 140px;
-    right: 6px;
+    top: 138px;
+    right: 190px;
     border-radius: 5px;
+
+    display: none;
 
     text-align: center;
 
@@ -139,19 +173,19 @@ body {
     display: none;
 
     width: 100%;
-    background-color: #DC143C;
+    
 }
 
 .toggleBanner1{
     position: absolute;
     top: 140px;
-    left: 245px;
+    right: 250px;
     z-index: 2;
 
     display: none;
 
     width: 65px;
-    background-color: #DC143C;
+    
 }
 
 .toggleMap{
@@ -214,6 +248,7 @@ body {
     opacity: 0.7;
 }
 
+
 @media only screen and (max-width:768px){
      
     #map{
@@ -235,6 +270,15 @@ body {
     .toggleBanner1{
         display: flex;
     }
+
+    .showFilters{
+        right: 190px;
+    }
+
+    .filterPanel{
+        right: 134px;
+    }
+
 }
 
 .main-container {
@@ -378,6 +422,7 @@ input{
     width: 48px;
     height: 48px;
     z-index: 1;
+    display: none;
 }
 
 .addListing0:hover{
@@ -394,6 +439,7 @@ input{
     width: 50px;
     height: 50px;
     z-index: 1;
+    display: none;
 }
 
 .addListing:hover{
