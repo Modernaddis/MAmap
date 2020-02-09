@@ -78,6 +78,17 @@ $('#toggleList').click(function(){
     }
 })
 
+//Bug Fix
+window.onresize = function(event) {
+    if (screen.width > 768) {
+        // alert('Full..')
+        $("#map").show();
+        $( "#listingCards").show();
+    }
+}
+
+
+
 
 // Click Map to add Listing
 function addListing0(){
