@@ -19,57 +19,16 @@
 </head>
 <body>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css" type="text/css" />
+    <link rel="stylesheet" href="Style/custom-directions.css" type="text/css" />
     
     
     <div id='main-container' class='main-container'><!-- Main Container -->
       
       <div id="map"><!-- Map Div -->
-        <!-- Show Listings Mobile-->
         
-          <div class='showFilters' id='showFilters'>
-            <img src='filter_hamburger.png' 
-              title='Show Filters' height="45px" /></br>
-          </div>
-       
-        <div id='filterPanel' class='filterPanel'>
-          <!-- Filter -->
-          <div onClick = 'filterMap(0)' class='filter'>
-            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-food.svg' alt='filter-icon' title='Food' /></br>
-            <label>Food</label>
-          </div>
-          <div onClick = 'filterMap(1)'class='filter'>
-            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-arts-entertainment.svg' alt='filter-icon' title='Play' /></br>
-            <label>Play</label>
-          </div>
-          <div onClick = 'filterMap(2)'class='filter'>
-            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-bakery.svg' alt='filter-icon' title='Bakery' /></br>
-            <label>Bakery</label>
-          </div>
-          <div onClick = 'filterMap(3)'class='filter'>
-            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-outdoors.svg' alt='filter-icon' title='Park' /></br>
-            <label>Park</label>
-          </div>
-          <div onClick = 'filterMap(4)'class='filter'>
-            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-lodgings.svg' alt='filter-icon' title='Hotels' /></br>
-            <label>Hotels</label>
-          </div>
-          <div onClick = 'filterMap(5)'class='filter'>
-            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-movie.svg' alt='filter-icon' title='Movies' /></br>
-            <label>Movie</label>
-          </div>
-          <div onClick = 'filterMap(6)'class='filter'>
-            <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-art-gallery.svg' alt='filter-icon' title='Gallery' /></br>
-            <label>Gallery</label>
-
-          </div>
-        
-        </div><!-- Filter END-->
-
-        <!-- Show Listings Mobile-->
         <div class='toggleBanner1' id='toggleBanner1' >
             <div class='toggleList' id='toggleList'>
-              <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-event.svg' alt='listing-icon' title='Go to Listings' height="45px"/></br>
+              <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-event.svg' alt='listing-icon' title='Go to Listings' height="22px"/></br>
             </div>
         </div>
 
@@ -92,9 +51,56 @@
       </div><!-- Map Div END-->
       <div id='listingCards' class='container'>
         <div class='toggleBanner0' id='toggleBanner0' >
+            <div class='showFilters' id='showFilters'>
+                <img src='filter_Gears.png' title='Show Filters' height="45px" /></br>
+                <label>&nbsp;Filter</label>
+            </div>
+
           <div class='toggleMap' id='toggleMap'>
             <img src='https://modernaddis.com/wp-content/uploads/2018/12/menu-map.svg' alt='map-icon' title='Go to Map' height="45px"/></br>
           </div>
+
+          
+          
+          <div id='filterPanel' class='filterPanel'>
+            <!-- Filter -->
+            <div onClick='filterMap(0)' class='filter'>
+              <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-food.svg' alt='filter-icon' title='Food' /></br>
+              <label>Food</label>
+            </div>
+            <div onClick='filterMap(1)' class='filter'>
+              <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-arts-entertainment.svg' alt='filter-icon'
+                title='Play' /></br>
+              <label>Play</label>
+            </div>
+            <div onClick='filterMap(2)' class='filter'>
+              <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-bakery.svg' alt='filter-icon'
+                title='Bakery' /></br>
+              <label>Bakery</label>
+            </div>
+            <div onClick='filterMap(3)' class='filter'>
+              <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-outdoors.svg' alt='filter-icon'
+                title='Park' /></br>
+              <label>Park</label>
+            </div>
+            <div onClick='filterMap(4)' class='filter'>
+              <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-lodgings.svg' alt='filter-icon'
+                title='Hotels' /></br>
+              <label>Hotels</label>
+            </div>
+            <div onClick='filterMap(5)' class='filter'>
+              <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-movie.svg' alt='filter-icon'
+                title='Movies' /></br>
+              <label>Movie</label>
+            </div>
+            <div onClick='filterMap(6)' class='filter'>
+              <img src='https://modernaddis.com/wp-content/uploads/2018/12/icon-art-gallery.svg' alt='filter-icon'
+                title='Gallery' /></br>
+              <label>Gallery</label>
+          
+            </div>
+          
+          </div><!-- Filter END-->
         
         </div>
       </div>
@@ -116,12 +122,13 @@
       });
 
       //Directions API
-      map.addControl(
-        new MapboxDirections({
+      let directions = new MapboxDirections({
           accessToken: mapboxgl.accessToken
-        }),
-        'top-right'
-      );
+        })
+      
+      map.addControl(directions, 'top-left');
+
+      
 
       // Zoom and Rotation 
       map.addControl(new mapboxgl.NavigationControl());

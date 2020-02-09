@@ -85,17 +85,17 @@ body {
     top: 0;
     right: 0;
     bottom: 0;
-    width: 50%;  
+    width: 59%;
+    z-index: 3;  
 }
 
 .showFilters{
-    position: absolute;
-    top: 140px;
-    right: 250px;
+    
+    right: 15px;
     
     padding: 3px;
     margin: 3px;
-    width: 45px;
+    width: 95px;
 
     border-style: solid;
     border-width: thin;
@@ -104,10 +104,15 @@ body {
     color: #fff;
     text-align: center;
 
-    background-color: #6a7882;
+    background-color: #DC143C;
     font-family: 'Arial';
     font-size: 12;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
     z-index: 2;
     opacity: 0.5; 
 }
@@ -123,8 +128,8 @@ body {
 .filterPanel{
     position: absolute;
     padding: 3px;
-    top: 138px;
-    right: 190px;
+    top: 60px;
+    left: 0px;
     border-radius: 5px;
 
     display: none;
@@ -149,7 +154,7 @@ body {
     color: #fff;
     text-align: center;
 
-    background-color: #6a7882;
+    background-color: #DC143C;
     font-family: 'Arial';
     font-size: 12;
 
@@ -160,17 +165,18 @@ body {
 .filter:hover{
     cursor: pointer;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-    opacity: 0.7;
+    width: 82%;
+    opacity: 0.8;
 }
 
 .toggleBanner0{
     position: relative;  /* Safari */
     position: sticky;
+    max-height: 65px;
     top: 0;
     z-index: 3;
 
-    display: none;
+    display: flex;
 
     width: 100%;
     
@@ -178,13 +184,18 @@ body {
 
 .toggleBanner1{
     position: absolute;
-    top: 140px;
-    right: 250px;
+    top: 136px;
+    right: 0;
+    padding: 4px;
     z-index: 2;
-
+   
+    width: 10px;
     display: none;
 
-    width: 65px;
+    align-items: left;
+    justify-content: left;
+
+    width: 40px;
     
 }
 
@@ -196,35 +207,33 @@ body {
     margin: 3px;
     width: 50px;
 
-    border-style: solid;
-    border-width: thin;
-    border-color: #fff;
 
     color: #fff;
     text-align: center;
 
-    background-color: #6a7882;
+    
     font-family: 'Arial';
     font-size: 12;
 
     z-index: 1000;
     opacity: 0.5;
+
+    display: none;
 }
 
 .toggleMap:hover{
     cursor: pointer;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
     opacity: 0.7;
 }
 
 .toggleList{
     
-    right: 10px;
 
     padding: 3px;
     margin: 3px;
-    width: 50px;
+    width: 25px;
+    height: 25px;
+    border-radius: 7px;
 
     border-style: solid;
     border-width: thin;
@@ -249,20 +258,24 @@ body {
 }
 
 
+
 @media only screen and (max-width:768px){
      
     #map{
         width: 100%;
+        z-index: 2;
     }
     
     .container{
         min-width: 100%;
         max-width: 100%;
+        z-index: 3;
     }
     .card{
         
         min-width: 100%;
         max-width: 100%;
+        min-height: 600px
     }
     .toggleBanner0{
         display: flex;
@@ -271,12 +284,9 @@ body {
         display: flex;
     }
 
-    .showFilters{
-        right: 190px;
-    }
-
-    .filterPanel{
-        right: 134px;
+    .toggleMap{
+        
+        display: block;
     }
 
 }
@@ -298,7 +308,9 @@ body {
     flex-wrap: wrap;
     z-index: 1;
 
-    align-items: center;
+    
+
+    align-items: top;
     justify-content: center;
 
     font-family: 'Arial';
@@ -311,7 +323,7 @@ body {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 48%;
+    width: 39%;
     
     
     background-color: #FFF; /*F5F5F5 */
@@ -321,7 +333,8 @@ body {
 }
 
 .card{
-    width: 35%;
+    width: 42%;
+    max-height: 300px;
     border-style: solid;
     border-width: thin;
     border-color: #C0C0C0;
