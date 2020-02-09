@@ -436,7 +436,7 @@
 .directions-control.directions-control { width:100%; max-width:100%; }
 
 /* Input container */
-.directions-control.directions-control-inputs { top:0;left:0; max-width:230px;}
+.directions-control.directions-control-inputs { top:0;left:0; max-width:205px;}
 .mapbox-directions-profile { margin:10px; }
 
 /* Instructions container */
