@@ -262,6 +262,7 @@ body {
 @media only screen and (max-width:768px){
      
     #map{
+        right: 0;
         width: 100%;
         z-index: 2;
     }
