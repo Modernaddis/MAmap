@@ -37,20 +37,20 @@ $('#toggleMap').click(function(){
         showMap = 'true';
         showListing = 'false';
 
-        document.getElementById("map").style.zIndex = 1000;
-        document.getElementById("listingCards").style.zIndex = 999;
-        // $( "#map" ).show()
-        // $( "#listingCards").hide()
+        // document.getElementById("map").style.zIndex = 1000;
+        // document.getElementById("listingCards").style.zIndex = 999;
+        $( "#map" ).show()
+        $( "#listingCards").hide()
 
     }else{
         showMap = 'false';
         showListing = 'true';
 
-        document.getElementById("map").style.zIndex = 999;
-        document.getElementById("listingCards").style.zIndex = 1000;
+        // document.getElementById("map").style.zIndex = 999;
+        // document.getElementById("listingCards").style.zIndex = 1000;
        
-        // $( "#map" ).hide()
-        // $( "#listingCards").show()
+        $( "#map" ).hide()
+        $( "#listingCards").show()
 
     }
 })
@@ -60,29 +60,24 @@ $('#toggleList').click(function(){
         
         showListing = 'true';
         showMap = 'false';
-        // $( "#map" ).hide()
-        // $( "#listingCards").show()
+        $( "#map" ).hide()
+        $( "#listingCards").show()
 
-        document.getElementById("map").style.zIndex = 999;
-        document.getElementById("listingCards").style.zIndex = 1000;
+        // document.getElementById("map").style.zIndex = 999;
+        // document.getElementById("listingCards").style.zIndex = 1000;
 
     }else{
         showListing = 'false';
         showMap = 'true';
         
-        document.getElementById("map").style.zIndex = 1000;
-        document.getElementById("listingCards").style.zIndex = 999;
-        // $( "#map" ).show()
-        // $( "#listingCards").hide()
+        // document.getElementById("map").style.zIndex = 1000;
+        // document.getElementById("listingCards").style.zIndex = 999;
+        $( "#map" ).show()
+        $( "#listingCards").hide()
 
     }
 })
 
-function showMap() {
-    
-    
-    
-}
 
 // Click Map to add Listing
 function addListing0(){
