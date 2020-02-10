@@ -447,7 +447,7 @@
 .directions-control.directions-control-directions { 
   position: fixed;
   top: 385px;
-  height: 170px;
+  height: 400px;
 }
 .mapbox-directions-multiple { min-height:50px;}
 
