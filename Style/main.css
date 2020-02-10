@@ -199,6 +199,19 @@ body {
     
 }
 
+.toggleBanner2{
+    position: relative;  /* Safari */
+    position: sticky;
+    max-height: 65px;
+    top: 0;
+    z-index: 3;
+
+    display: none;
+
+    width: 100%;
+    
+}
+
 .toggleMap{
     position: absolute;
     right: 10px;
@@ -259,6 +272,37 @@ body {
 
 
 
+.select {
+    
+    position: relative;
+    display: inline-block;
+    width: 150px;
+}    
+.select select {
+        font-family: "Helvetica Neue";
+        font-size: 16px;
+        display: inline-block;
+        width: 150px;
+        
+    }
+        .select select::-ms-expand {
+            display: none;
+        }
+        .select select:hover,
+        .select select:focus {
+            cursor: pointer;
+        }
+        .select select:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+
+
+
+
+
+
 @media only screen and (max-width:768px){
      
     #map{
@@ -276,7 +320,7 @@ body {
         
         min-width: 100%;
         max-width: 100%;
-        min-height: 600px
+        
     }
     .toggleBanner0{
         display: flex;
