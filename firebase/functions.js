@@ -23,10 +23,12 @@ var showFilters = 'false';
 $('#showFilters').click(function(){
     if (showFilters === 'false'){
         showFilters = 'true';
-        document.getElementById("filterPanel").style.display = "block";
+        // document.getElementById("filterPanel").style.display = "block";
+        document.getElementById("toggleBanner2").style.display = "flex";
     }else{
         showFilters = 'false';
-        document.getElementById("filterPanel").style.display = "none";
+        // document.getElementById("filterPanel").style.display = "none";
+        document.getElementById("toggleBanner2").style.display = "none";
     }
 })
 
@@ -85,6 +87,222 @@ window.onresize = function(event) {
         $("#map").show();
         $( "#listingCards").show();
     }
+}
+
+//Populate Filter DropDown
+function populateSelect(){
+    
+    var select = document.getElementById('select-css');
+
+    var entertainment = ['Gallery', 'Play', 'Zoo'];
+    var opt = document.createElement('optgroup');
+    var group = 'Art & Entertainment';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    entertainment.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var embassy = [];
+    var opt = document.createElement('optgroup');
+    var group = 'Embassy';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    embassy.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var food = ['Bakery', 'Cafe', 'Pizza Place', 'Restaurant'];
+    var opt = document.createElement('optgroup');
+    var group = 'Food';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    food.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var health = ['Clinic', 'Dentist', 'Hospital', 'Pharmacy'];
+    var opt = document.createElement('optgroup');
+    var group = 'Health';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    health.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var hotel = ['Resort', 'Hotels'];
+    var opt = document.createElement('optgroup');
+    var group = 'Hotel';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    hotel.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var lodging = ['Apartment', 'Condos'];
+    var opt = document.createElement('optgroup');
+    var group = 'Lodging';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    lodging.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var movie = ['Movie'];
+    var opt = document.createElement('optgroup');
+    var group = 'Movie Theater';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    movie.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var nightLife = ['Bar', 'Brewery', 'Lounge', 'Nightclub'];
+    var opt = document.createElement('optgroup');
+    var group = 'Nightlife';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    nightLife.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var outDoors = ['Museum', 'Park'];
+    var opt = document.createElement('optgroup');
+    var group = 'Outdoors & Recreation';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    outDoors.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var police = [];
+    var opt = document.createElement('optgroup');
+    var group = 'Police Department';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    police.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var school = ['Cooking School', 'Driving School', 'Elementary', 'High School', 'KG', 'Language School', 'University'];
+    var opt = document.createElement('optgroup');
+    var group = 'School';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    school.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var service = ['Auto Parts', 'Barbershop', 'Beauty & Spas', 'Car Dealership', 'Car Rental', 'Car Service', 'Car Wash', 'Cleaning Service', 'Dry Cleaner', 'Fuel Station', 'Hair Salon', 'Home Service', 'Laundry & Dry Cleaning', 'Lawyer', 'Mobile Shop', 'Photographer', 'Travel Guide', 'Window Tint'];
+    var opt = document.createElement('optgroup');
+    var group = 'Service';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    service.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var shops = ['Bank', 'Bookstore', 'Clothing Store', 'Furniture', 'Supermarkets'];
+    var opt = document.createElement('optgroup');
+    var group = 'Shops';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    shops.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var stadium = [];
+    var opt = document.createElement('optgroup');
+    var group = 'Stadium';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    stadium.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
+
+    var winery = [];
+    var opt = document.createElement('optgroup');
+    var group = 'Winery';
+    opt.label = group;
+    opt.innerHTML = group;
+    select.appendChild(opt);
+
+    winery.forEach(function (item) {
+        var opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        select.appendChild(opt);
+    })
 }
 
 
@@ -458,9 +676,26 @@ function populateMap() {
 
 } //populateGeoJson
 
-function filterMap(i){
-    const filters = ['Food', 'Play', 'Bakery', 'Park', 'Hotels', 'Movie', 'Gallery'];
-    category_filter = filters[i];
+// function filterMap(i){
+//     const filters = ['Food', 'Play', 'Bakery', 'Park', 'Hotels', 'Movie', 'Gallery'];
+//     category_filter = filters[i];
+
+//     $( ".marker" ).remove();
+//     $(".card").remove();
+//     geojson = {
+//         'type': 'FeatureCollection',
+//         'features': []
+//     };
+
+//     populateMap();
+//     // alert(filters[i])
+// }
+
+//Dropdown Filter
+$('.select-css').on('change', function () {
+    // alert(this.value);
+
+    category_filter = this.value;
 
     $( ".marker" ).remove();
     $(".card").remove();
@@ -470,8 +705,8 @@ function filterMap(i){
     };
 
     populateMap();
-    // alert(filters[i])
-}
+});
+
 
 // // Click Listener
 // map.on('click', function (e) {

@@ -50,18 +50,13 @@
         
       </div><!-- Map Div END-->
       <div id='listingCards' class='container'>
-        <div class='toggleBanner2' id= 'toggleBanner2' >
-            <div class="select" >
-                <select>
-                    <option>-- Select Filter --</option>
-                    <option>Hello 1</option>
-                    <option>Hello 2</option>
-                </select>
-                
-            </div>
-
-        </div>
+        
         <div class='toggleBanner0' id='toggleBanner0' >
+            <div class='toggleBanner2' id='toggleBanner2' >
+                <select class='select-css' id='select-css'>
+                  <option>-- Select Filter --</option>
+                </select>
+            </div>
             <div class='showFilters' id='showFilters'>
                 <img src='filter_Gears.png' title='Show Filters' height="45px" /></br>
                 <label>&nbsp;Filter</label>
@@ -169,6 +164,7 @@
 
 <script>
     populateMap();
+    populateSelect();
     
 </script>
 
