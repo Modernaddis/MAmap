@@ -94,12 +94,7 @@ function populateSelect(){
     
     var select = document.getElementById('select-css');
 
-    var entertainment = ['Gallery', 'Play', 'Zoo'];
-    var opt = document.createElement('optgroup');
-    var group = 'Art & Entertainment';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var entertainment = ['Art & Entertainment','Gallery', 'Play', 'Zoo'];
 
     entertainment.forEach(function (item) {
         var opt = document.createElement('option');
@@ -108,12 +103,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var embassy = [];
-    var opt = document.createElement('optgroup');
-    var group = 'Embassy';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var embassy = ['Embassy'];
 
     embassy.forEach(function (item) {
         var opt = document.createElement('option');
@@ -122,12 +112,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var food = ['Bakery', 'Cafe', 'Pizza Place', 'Restaurant'];
-    var opt = document.createElement('optgroup');
-    var group = 'Food';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var food = ['Food', 'Bakery', 'Cafe', 'Pizza Place', 'Restaurant'];
 
     food.forEach(function (item) {
         var opt = document.createElement('option');
@@ -136,12 +121,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var health = ['Clinic', 'Dentist', 'Hospital', 'Pharmacy'];
-    var opt = document.createElement('optgroup');
-    var group = 'Health';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var health = ['Health', 'Clinic', 'Dentist', 'Hospital', 'Pharmacy'];
 
     health.forEach(function (item) {
         var opt = document.createElement('option');
@@ -151,11 +131,6 @@ function populateSelect(){
     })
 
     var hotel = ['Resort', 'Hotels'];
-    var opt = document.createElement('optgroup');
-    var group = 'Hotel';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
 
     hotel.forEach(function (item) {
         var opt = document.createElement('option');
@@ -164,12 +139,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var lodging = ['Apartment', 'Condos'];
-    var opt = document.createElement('optgroup');
-    var group = 'Lodging';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var lodging = ['Lodging', 'Apartment', 'Condos'];
 
     lodging.forEach(function (item) {
         var opt = document.createElement('option');
@@ -178,12 +148,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var movie = ['Movie'];
-    var opt = document.createElement('optgroup');
-    var group = 'Movie Theater';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var movie = ['Movie Theater', 'Movie'];
 
     movie.forEach(function (item) {
         var opt = document.createElement('option');
@@ -192,12 +157,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var nightLife = ['Bar', 'Brewery', 'Lounge', 'Nightclub'];
-    var opt = document.createElement('optgroup');
-    var group = 'Nightlife';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var nightLife = ['Nightlife', 'Bar', 'Brewery', 'Lounge', 'Nightclub'];
 
     nightLife.forEach(function (item) {
         var opt = document.createElement('option');
@@ -206,12 +166,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var outDoors = ['Museum', 'Park'];
-    var opt = document.createElement('optgroup');
-    var group = 'Outdoors & Recreation';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var outDoors = ['Outdoors & Recreation', 'Museum', 'Park'];
 
     outDoors.forEach(function (item) {
         var opt = document.createElement('option');
@@ -220,12 +175,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var police = [];
-    var opt = document.createElement('optgroup');
-    var group = 'Police Department';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var police = ['Police Department'];
 
     police.forEach(function (item) {
         var opt = document.createElement('option');
@@ -234,12 +184,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var school = ['Cooking School', 'Driving School', 'Elementary', 'High School', 'KG', 'Language School', 'University'];
-    var opt = document.createElement('optgroup');
-    var group = 'School';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var school = ['School', 'Cooking School', 'Driving School', 'Elementary', 'High School', 'KG', 'Language School', 'University'];
 
     school.forEach(function (item) {
         var opt = document.createElement('option');
@@ -248,12 +193,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var service = ['Auto Parts', 'Barbershop', 'Beauty & Spas', 'Car Dealership', 'Car Rental', 'Car Service', 'Car Wash', 'Cleaning Service', 'Dry Cleaner', 'Fuel Station', 'Hair Salon', 'Home Service', 'Laundry & Dry Cleaning', 'Lawyer', 'Mobile Shop', 'Photographer', 'Travel Guide', 'Window Tint'];
-    var opt = document.createElement('optgroup');
-    var group = 'Service';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var service = ['Service', 'Auto Parts', 'Barbershop', 'Beauty & Spas', 'Car Dealership', 'Car Rental', 'Car Service', 'Car Wash', 'Cleaning Service', 'Dry Cleaner', 'Fuel Station', 'Hair Salon', 'Home Service', 'Laundry & Dry Cleaning', 'Lawyer', 'Mobile Shop', 'Photographer', 'Travel Guide', 'Window Tint'];
 
     service.forEach(function (item) {
         var opt = document.createElement('option');
@@ -262,12 +202,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var shops = ['Bank', 'Bookstore', 'Clothing Store', 'Furniture', 'Supermarkets'];
-    var opt = document.createElement('optgroup');
-    var group = 'Shops';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var shops = ['Shops', 'Bank', 'Bookstore', 'Clothing Store', 'Furniture', 'Supermarkets'];
 
     shops.forEach(function (item) {
         var opt = document.createElement('option');
@@ -276,12 +211,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var stadium = [];
-    var opt = document.createElement('optgroup');
-    var group = 'Stadium';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var stadium = ['Stadium'];
 
     stadium.forEach(function (item) {
         var opt = document.createElement('option');
@@ -290,12 +220,7 @@ function populateSelect(){
         select.appendChild(opt);
     })
 
-    var winery = [];
-    var opt = document.createElement('optgroup');
-    var group = 'Winery';
-    opt.label = group;
-    opt.innerHTML = group;
-    select.appendChild(opt);
+    var winery = ['Winery'];
 
     winery.forEach(function (item) {
         var opt = document.createElement('option');
@@ -304,9 +229,6 @@ function populateSelect(){
         select.appendChild(opt);
     })
 }
-
-
-
 
 // Click Map to add Listing
 function addListing0(){
