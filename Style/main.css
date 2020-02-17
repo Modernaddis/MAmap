@@ -348,8 +348,7 @@ body {
         z-index: 3;
     }
     .card{
-        min-height: 55%;
-        max-height: 80%;
+      
         min-width: 100%;
         max-width: 100%;
         
@@ -416,7 +415,7 @@ body {
 
 .card{
     width: 40%;
-    height: 40%;
+    
     
     border-style: solid;
     border-width: medium;
