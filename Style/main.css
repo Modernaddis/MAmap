@@ -349,7 +349,7 @@ body {
     }
     .card{
       
-        min-width: 100%;
+        min-width: 90%;
         max-width: 100%;
         
     }
@@ -415,7 +415,7 @@ body {
 
 .card{
     width: 40%;
-    
+    height: fit-content;
     
     border-style: solid;
     border-width: medium;
