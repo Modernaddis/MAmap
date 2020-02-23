@@ -349,7 +349,7 @@ body {
     }
     .card{
       
-        min-width: 100%;
+        min-width: 90%;
         max-width: 100%;
         
     }
@@ -415,8 +415,13 @@ body {
 
 .card{
     width: 40%;
+<<<<<<< HEAD
     
 
+=======
+    height: fit-content;
+    
+>>>>>>> e1ba0d990e8dc26db7176324cf51fffcf9b84d88
     border-style: solid;
     border-width: medium;
     border-color: #C0C0C0;
