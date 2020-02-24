@@ -188,13 +188,30 @@ body {
 
 .toggleBanner1{
     position: absolute;
-    top: 136px;
+    top: 174px;
     right: 0;
     padding: 4px;
     z-index: 2;
    
     width: 10px;
     display: none;
+
+    align-items: left;
+    justify-content: left;
+
+    width: 40px;
+    
+}
+
+.toggleBanner3{
+    position: absolute;
+    top: 136px;
+    right: 0;
+    padding: 4px;
+    z-index: 2;
+   
+    width: 10px;
+    display: flex;
 
     align-items: left;
     justify-content: left;
@@ -249,8 +266,6 @@ body {
 }
 
 .toggleList{
-    
-
     padding: 3px;
     margin: 3px;
     width: 25px;
@@ -273,6 +288,35 @@ body {
 }
 
 .toggleList:hover{
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    opacity: 0.7;
+}
+
+.toggleDirections{
+    padding: 3px;
+    margin: 3px;
+    width: 25px;
+    height: 25px;
+    border-radius: 7px;
+
+    border-style: solid;
+    border-width: thin;
+    border-color: #fff;
+
+    color: #fff;
+    text-align: center;
+
+    background-color: #6a7882;
+    font-family: 'Arial';
+    font-size: 12;
+
+    z-index: 1000;
+    opacity: 0.5;
+}
+
+.toggleDirections:hover{
     cursor: pointer;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
@@ -389,9 +433,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     z-index: 1;
-
     
-
     align-items: top;
     justify-content: center;
 

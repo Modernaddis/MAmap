@@ -18,6 +18,7 @@ var lat;
 var showMap = 'false';
 var showListing = 'true';
 var showFilters = 'false';
+var showDirections = 'false';
 
 //GLOBALS
 $('#showFilters').click(function(){
@@ -53,6 +54,33 @@ $('#toggleMap').click(function(){
        
         $( "#map" ).hide()
         $( "#listingCards").show()
+
+    }
+})
+
+$('#toggleDirections').click(function(){
+    
+    if (showDirections === 'false'){
+        
+        showDirections = 'true';
+       
+
+        // document.getElementById("map").style.zIndex = 1000;
+        // document.getElementById("listingCards").style.zIndex = 999;
+        $( ".directions-control.directions-control-inputs" ).show()
+        $(".directions-control.directions-control-directions").show();
+      
+
+    }else{
+        showDirections = 'false';
+       
+
+        // document.getElementById("map").style.zIndex = 999;
+        // document.getElementById("listingCards").style.zIndex = 1000;
+       
+        $( ".directions-control.directions-control-inputs" ).hide()
+        $(".directions-control.directions-control-directions").hide();
+        
 
     }
 })

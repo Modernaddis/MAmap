@@ -25,6 +25,12 @@
     <div id='main-container' class='main-container'><!-- Main Container -->
       
       <div id="map"><!-- Map Div -->
+
+        <div class='toggleBanner3' id='toggleBanner3' >
+          <div class='toggleDirections' id='toggleDirections'>
+            <img src='driving.png' alt='Directions-icon' title='Directions' height="22px"/></br>
+          </div>
+        </div>
         
         <div class='toggleBanner1' id='toggleBanner1' >
             <div class='toggleList' id='toggleList'>
@@ -135,6 +141,9 @@
         })
       
       map.addControl(directions, 'top-left');
+      //Hide Directions
+      $( ".directions-control.directions-control-inputs" ).hide();
+      $(".mapbox-directions-instructions").hide();
 
       
 

@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Listing Directions</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css" rel="stylesheet" />
+    <!-- Jquery -->
+    <script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            z-index: 1;
+    
+    
+    
+            align-items: top;
+            justify-content: center;
+    
+            font-family: 'Arial';
+            font-size: 14;
+        }
+    
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    
+        #map {
+            position: absolute;
+            margin: auto;
+            width: 80%;
+            height: 60%;
+        }
+        #listingInfo{
+            position: absolute;
+            bottom: 30px;
+        }
+    
+        .linkText:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            color: #DC143C;
+        }
+        .arrow:hover {
+            cursor: pointer;
+        }
+
+        .marker {
+            background-image: url('../mapbox-icon2.png');
+            background-size: cover;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            
+        }
+        .marker:hover {
+            width: 43px;
+            height: 43px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
+    <link rel="stylesheet" href="Style/custom-directions.css" type="text/css" />
+
+    <div class='container'>
+        <div id="map"></div>
+        <div id="listingInfo">
+            <h3>1-8 Russell Square, London, WC1B 5BE</h3>
+                <span class='arrow'>&#x21B3;&nbsp;</span><span
+                    class='linkText'>Get Directions</span></a>
+            
+        </div>
+        
+    
+    
+    </div>
+    
+    <script>
+        var coord = [38.7885219, 9.00101139];
+        mapboxgl.accessToken = 'pk.eyJ1IjoieW9zaTEiLCJhIjoiY2pvNHdzem96MDBycDNrb2E5aDh1bW1nYiJ9._uzV8S-tiPaZZiCm0H4ABA';
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+            center: coord, // starting position [lng, lat]
+            zoom: 11 // starting zoom
+        });
+
+        //Directions API
+        let directions = new MapboxDirections({
+            accessToken: mapboxgl.accessToken
+            })
+        
+        map.addControl(directions, 'top-left');
+        //Hide Directions
+        $( ".directions-control.directions-control-inputs" ).hide();
+        $(".mapbox-directions-instructions").hide();
+
+        var geojson = {
+                'type': 'FeatureCollection',
+                'features': [{
+                    'type': 'Feature',
+                    'properties': {
+                        'message': '1-8 Russell Square, London, WC1B 5BE',
+                        'iconSize': [60, 60]
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': coord
+                    }
+                }]
+            };
+
+        // add markers to map
+        geojson.features.forEach(function (marker) {
+                // create a DOM element for the marker
+                var el = document.createElement('div');
+                el.className = 'marker';
+                el.style.width = marker.properties.iconSize[0] + 'px';
+                el.style.height = marker.properties.iconSize[1] + 'px';
+
+                el.addEventListener('click', function () {
+                    window.alert(marker.properties.message);
+                });
+
+                // add marker to map
+                new mapboxgl.Marker(el)
+                    .setLngLat(marker.geometry.coordinates)
+                    .addTo(map);
+            });
+
+            $('.linkText').click(function () {
+                   
+                    const container = map.getContainer();
+                    const rfs =
+                        container.requestFullscreen ||
+                        container.webkitRequestFullScreen ||
+                        container.mozRequestFullScreen ||
+                        container.msRequestFullscreen;
+
+                    rfs.call(container);
+
+                    $( ".directions-control.directions-control-inputs" ).show();
+                    $(".mapbox-directions-instructions").show();
+                    directions.setDestination(coord);
+
+                })
+            $('.arrow').click(function () {
+                    
+                    map.getContainer().requestFullscreen();
+
+                })
+    </script>
+
+</body>
+
+</html>
