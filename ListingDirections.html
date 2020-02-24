@@ -33,8 +33,8 @@
         #map {
             position: absolute;
             margin: auto;
-            width: 80%;
-            height: 60%;
+            width: 100%;
+            height: 70%;
         }
         #listingInfo{
             position: absolute;
@@ -90,8 +90,11 @@
             container: 'map', // container id
             style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
             center: coord, // starting position [lng, lat]
-            zoom: 11 // starting zoom
+            zoom: 8 // starting zoom
         });
+
+        // Add FullScreen
+        map.addControl(new mapboxgl.FullscreenControl());
 
         //Directions API
         let directions = new MapboxDirections({
