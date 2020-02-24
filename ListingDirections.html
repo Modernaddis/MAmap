@@ -94,14 +94,15 @@
         });
 
         // Add FullScreen
-        map.addControl(new mapboxgl.FullscreenControl());
+        let fs = new mapboxgl.FullscreenControl();
+        map.addControl(fs, 'top-left');
 
         //Directions API
         let directions = new MapboxDirections({
             accessToken: mapboxgl.accessToken
             })
         
-        map.addControl(directions, 'top-left');
+        map.addControl(directions, 'bottom-left');
         //Hide Directions
         $( ".directions-control.directions-control-inputs" ).hide();
         $(".mapbox-directions-instructions").hide();
