@@ -49,6 +49,16 @@
         let directions = new MapboxDirections({
             accessToken: mapboxgl.accessToken
             })
+
+        // Add geolocate user.
+        map.addControl(
+            new mapboxgl.GeolocateControl({
+                positionOptions: {
+                enableHighAccuracy: true
+                },
+                trackUserLocation: true
+            })
+            );
         
         map.addControl(directions, 'top-left');
         //Hide Directions
