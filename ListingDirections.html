@@ -33,6 +33,10 @@
     
     <script>
         var coord = [38.7885219, 9.00101139];
+        var userPosition;
+        var directions;
+
+
         mapboxgl.accessToken = 'pk.eyJ1IjoieW9zaTEiLCJhIjoiY2pvNHdzem96MDBycDNrb2E5aDh1bW1nYiJ9._uzV8S-tiPaZZiCm0H4ABA';
         var map = new mapboxgl.Map({
             container: 'map', // container id
@@ -46,19 +50,21 @@
         map.addControl(fs, 'bottom-right');
 
         //Directions API
-        let directions = new MapboxDirections({
+        directions = new MapboxDirections({
             accessToken: mapboxgl.accessToken
             })
 
         // Add geolocate user.
-        map.addControl(
-            new mapboxgl.GeolocateControl({
-                positionOptions: {
-                enableHighAccuracy: true
-                },
-                trackUserLocation: true
-            })
-            );
+        var geolocate = new mapboxgl.GeolocateControl();
+
+        map.addControl(geolocate);
+
+        geolocate.on('geolocate', function(e) {
+            var lon = e.coords.longitude;
+            var lat = e.coords.latitude
+            userPosition = [lon, lat];
+            directions.setOrigin(userPosition);
+        });
         
         map.addControl(directions, 'top-left');
         //Hide Directions
