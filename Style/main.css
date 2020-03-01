@@ -408,6 +408,7 @@ body {
     .toggleMap{
         
         display: block;
+	position: fixed; 
     }
 
     .select-css{
