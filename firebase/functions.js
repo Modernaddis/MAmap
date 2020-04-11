@@ -396,9 +396,10 @@ function populateMap() {
                 el.filter = ['!', ['has', 'point_count']];
 
                 //Create Listing URL
-                var listing_hardCode = 'https://modernaddis.com/listings/';
-                var listing_Destination = marker.properties.Position.split(' ').join('-');
-                var listingHref = listing_hardCode + listing_Destination + '/'
+                //var listing_hardCode = 'https://modernaddis.com/listings/';
+                //var listing_Destination = marker.properties.Position.split(' ').join('-');
+                //var listingHref = listing_hardCode + listing_Destination + '/'
+                var listingHref = marker.properties.Listing_URL
                 
 
                 //Check for Image
@@ -481,9 +482,10 @@ function populateMap() {
 
                 
                 //Create Listing URL
-                var listing_hardCode = 'https://modernaddis.com/listings/';
-                var listing_Destination = listingCard.properties.Position.split(' ').join('-');
-                var listingHref = listing_hardCode + listing_Destination + '/'
+//                 var listing_hardCode = 'https://modernaddis.com/listings/';
+//                 var listing_Destination = listingCard.properties.Position.split(' ').join('-');
+//                 var listingHref = listing_hardCode + listing_Destination + '/'
+                var listingHref = marker.properties.Listing_URL
 
                 //Create Link
                 a.appendChild(h);
@@ -510,9 +512,10 @@ function populateMap() {
 
                 if (marker.properties.Category === category_filter) {
                     //Create Listing URL
-                    var listing_hardCode = 'https://modernaddis.com/listings/';
-                    var listing_Destination = marker.properties.Position.split(' ').join('-');
-                    var listingHref = listing_hardCode + listing_Destination + '/'
+//                     var listing_hardCode = 'https://modernaddis.com/listings/';
+//                     var listing_Destination = marker.properties.Position.split(' ').join('-');
+//                     var listingHref = listing_hardCode + listing_Destination + '/'
+                    var listingHref = marker.properties.Listing_URL
 
 
                     //Check for Image
@@ -587,9 +590,10 @@ function populateMap() {
 
 
                     //Create Listing URL
-                    var listing_hardCode = 'https://modernaddis.com/listings/';
-                    var listing_Destination = listingCard.properties.Position.split(' ').join('-');
-                    var listingHref = listing_hardCode + listing_Destination + '/'
+//                     var listing_hardCode = 'https://modernaddis.com/listings/';
+//                     var listing_Destination = listingCard.properties.Position.split(' ').join('-');
+//                     var listingHref = listing_hardCode + listing_Destination + '/'
+                    var listingHref = marker.properties.Listing_URL
 
                     //Create Link
                     a.appendChild(h);
