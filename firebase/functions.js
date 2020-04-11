@@ -485,7 +485,7 @@ function populateMap() {
 //                 var listing_hardCode = 'https://modernaddis.com/listings/';
 //                 var listing_Destination = listingCard.properties.Position.split(' ').join('-');
 //                 var listingHref = listing_hardCode + listing_Destination + '/'
-                var listingHref = marker.properties.Listing_URL
+                var listingHref = listingCard.properties.Listing_URL
 
                 //Create Link
                 a.appendChild(h);
@@ -593,7 +593,7 @@ function populateMap() {
 //                     var listing_hardCode = 'https://modernaddis.com/listings/';
 //                     var listing_Destination = listingCard.properties.Position.split(' ').join('-');
 //                     var listingHref = listing_hardCode + listing_Destination + '/'
-                    var listingHref = marker.properties.Listing_URL
+                    var listingHref = listingCard.properties.Listing_URL
 
                     //Create Link
                     a.appendChild(h);
